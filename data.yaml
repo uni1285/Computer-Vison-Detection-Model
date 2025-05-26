@@ -1,0 +1,4 @@
+train: yolo_data/images
+val: yolo_data/images
+nc: 1
+names: ['person']

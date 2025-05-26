@@ -1,4 +1,5 @@
-!pip install ultralytics -U
+### Install the packgae using below command
+# !pip install ultralytics -U
 
 from ultralytics import YOLO
 import cv2
