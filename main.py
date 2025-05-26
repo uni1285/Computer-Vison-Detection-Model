@@ -16,7 +16,7 @@ def main():
     # Step 1: 초기 모델로 detect 후 이미지 저장
     detector = YOLODetector("yolo11s.pt")
     img_dir = "CV_Train/Images"
-    save_dir_init = "output/init"
+    save_dir_init = "init_detection"
     os.makedirs(save_dir_init, exist_ok=True)
 
     for idx in range(300):
@@ -46,11 +46,11 @@ def main():
     final_model_path = "trained_models/fine_tuned_yolo.pt"
     os.makedirs("trained_models", exist_ok=True)
     shutil.copy(best_model_path, final_model_path)
-    print(f"[✔] Fine-tuned model saved to {final_model_path}")
+    print(f"Fine-tuned model saved to {final_model_path}")
 
     # Step 7: 학습된 모델로 다시 detect
     detector_tuned = YOLODetector(final_model_path)
-    save_dir_final = "output/final"
+    save_dir_final = "final_detection"
     os.makedirs(save_dir_final, exist_ok=True)
 
     for idx in range(300):
@@ -62,7 +62,13 @@ def main():
         boxes = detector_tuned.detect_person(img_path)
         detector_tuned.draw_boxes(img_path, boxes, save_path)
 
-    print(f"[✔] Detection results saved to: {save_dir_init} and {save_dir_final}")
+    print(f"Detection results saved to: {save_dir_init} and {save_dir_final}")
+
+if __name__ == "__main__":
+    main()
+
+
+    print(f"Detection results saved to: {save_dir_init} and {save_dir_final}")
 
 if __name__ == "__main__":
     main()
