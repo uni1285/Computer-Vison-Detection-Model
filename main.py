@@ -69,6 +69,3 @@ if __name__ == "__main__":
 
 
     print(f"Detection results saved to: {save_dir_init} and {save_dir_final}")
-
-if __name__ == "__main__":
-    main()
